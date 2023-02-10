@@ -3,7 +3,7 @@ import {
   UserAction,
   UserActionTypes,
   UserData,
-} from '../../../shared/types/user'
+} from '../../shared/types/user'
 
 export const login =
   (userData: UserData) => async (dispatch: Dispatch<UserAction>) => {
