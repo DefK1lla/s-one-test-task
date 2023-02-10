@@ -17,7 +17,7 @@ interface UserLoginAction {
 
 interface UserLoginSuccessAction {
   type: UserActionTypes.USER_LOGIN_SUCCESS
-  payload: UserState
+  payload: string
 }
 
 interface UserLoginErrorAction {
@@ -29,3 +29,8 @@ export type UserAction =
   | UserLoginAction
   | UserLoginSuccessAction
   | UserLoginErrorAction
+
+export interface UserData {
+  username: string
+  password: string
+}

@@ -19,9 +19,19 @@ export const userReducer = (
     case UserActionTypes.USER_LOGIN:
       return { ...state, loading: true }
     case UserActionTypes.USER_LOGIN_SUCCESS:
-      return { ...state, ...action.payload }
+      return {
+        isAuth: true,
+        loading: false,
+        error: null,
+        token: action.payload,
+      }
     case UserActionTypes.USER_LOGIN_ERROR:
-      return { ...state, error: action.payload }
+      return {
+        loading: false,
+        isAuth: false,
+        token: null,
+        error: action.payload,
+      }
     default:
       return state
   }
