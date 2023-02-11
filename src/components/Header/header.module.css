@@ -1,0 +1,47 @@
+.wrapper {
+  display: flex;
+}
+
+.logoDesktop {
+  flex-grow: 1;
+}
+
+.burgerBtn {
+  display: none;
+  margin-right: 2px;
+}
+
+.drawer {
+  display: none;
+}
+
+.drawerPaper {
+  width: 240px;
+}
+
+.navItemBtnWhite {
+  color: #fff;
+}
+
+.navItemBtnBlack {
+  text-align: center;
+  color: #000;
+}
+
+@media (max-width: 600px) {
+  .burgerBtn {
+    display: block;
+  }
+
+  .navDesktop {
+    display: none;
+  }
+
+  .drawer {
+    display: block;
+  }
+  
+  .logoDesktop{
+    display: none;
+  }
+}

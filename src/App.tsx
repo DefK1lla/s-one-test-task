@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import Header from './components/Header'
+import Header from './components/Header/Header'
 import { Login } from './pages/Login'
 import { News } from './pages/News'
 import { Profile } from './pages/Profile'
