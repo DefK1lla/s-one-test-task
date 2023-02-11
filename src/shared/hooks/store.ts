@@ -4,15 +4,24 @@ import {
   useDispatch,
   useSelector,
 } from 'react-redux'
-import { ActionCreatorsMapObject, bindActionCreators } from 'redux'
+import { bindActionCreators } from 'redux'
 
 import type { AppDispatch, RootState } from '../../store'
+
+import userActions from 'store/actions/userActions'
+import postActions from 'store/actions/postActions'
 
 export const useAppDispatch = useDispatch<AppDispatch>
 export const useAppSelector: TypedUseSelectorHook<RootState> =
   useSelector
 
-export const useActions = (actions: ActionCreatorsMapObject) => {
+export const useActions = () => {
   const dispatch = useAppDispatch()
-  return useMemo(() => bindActionCreators(actions, dispatch), [])
+  return useMemo(
+    () => ({
+      userActions: bindActionCreators(userActions, dispatch),
+      postActions: bindActionCreators(postActions, dispatch),
+    }),
+    []
+  )
 }

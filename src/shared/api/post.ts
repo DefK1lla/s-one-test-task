@@ -18,6 +18,7 @@ class PostApi {
     const res = await fetch(this.baseUrl + '/' + id, {
       method: 'DELETE',
     })
+
     if (!res.ok) {
       throw new Error('Something went wrong')
     }
