@@ -1,4 +1,4 @@
-import type { LoginData } from '../types/user'
+import type { LoginData } from '../../types/user'
 
 const validData: LoginData = {
   username: 'admin',
