@@ -6,10 +6,12 @@ import { News } from './pages/News'
 import { Profile } from './pages/Profile'
 import { NotFount } from './pages/NotFound/NotFound'
 
+import { navItems } from './shared/content/nav'
+
 function App() {
   return (
     <BrowserRouter>
-      <Header />
+      <Header navItems={navItems} />
       <Routes>
         <Route path='/login' element={<Login />} />
         <Route path='/profile' element={<Profile />} />

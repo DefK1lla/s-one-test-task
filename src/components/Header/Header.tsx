@@ -20,32 +20,14 @@ import {
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
+import { NavItem } from '../../shared/types/nav'
 
 interface Props {
+  navItems: NavItem[]
   window?: () => Window
 }
 
-const navItems = [
-  {
-    title: 'Home',
-    path: '/',
-  },
-  {
-    title: 'Profile',
-    path: '/profile',
-  },
-  {
-    title: 'News',
-    path: '/news',
-  },
-  {
-    title: 'Login',
-    path: '/login',
-  },
-]
-
-export default function DrawerAppBar(props: Props) {
-  const { window } = props
+export default function DrawerAppBar({ window, navItems }: Props) {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   const handleDrawerToggle = () => {
@@ -66,8 +48,11 @@ export default function DrawerAppBar(props: Props) {
             key={item.title}
             disablePadding
           >
-            <ListItemButton className={s.navItemBtnBlack}>
-              <ListItemText primary={item.title} />
+            <ListItemButton>
+              <ListItemText
+                className={s.navItemBtnBlack}
+                primary={item.title}
+              />
             </ListItemButton>
           </ListItem>
         ))}
@@ -103,6 +88,7 @@ export default function DrawerAppBar(props: Props) {
               {navItems.map(item => (
                 <Button
                   className={s.navItemBtnWhite}
+                  color='inherit'
                   component={Link}
                   to={item.path}
                   key={item.title}

@@ -6,17 +6,18 @@
   flex-grow: 1;
 }
 
-.burgerBtn {
-  display: none;
-  margin-right: 2px;
-}
-
 .drawer {
   display: none;
 }
 
 .drawerPaper {
   width: 240px;
+}
+
+.burgerBtn{
+  display: none;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .navItemBtnWhite {
@@ -31,6 +32,9 @@
 @media (max-width: 600px) {
   .burgerBtn {
     display: block;
+    position: static;
+    visibility: visible;
+    pointer-events: all;
   }
 
   .navDesktop {
