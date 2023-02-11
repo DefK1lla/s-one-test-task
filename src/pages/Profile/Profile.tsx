@@ -1,4 +1,5 @@
 import { FC } from 'react'
+
 import withAuth from '../../hoc/withAuth'
 
 export const Profile: FC = withAuth(() => {
