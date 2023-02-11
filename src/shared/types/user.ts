@@ -1,7 +1,10 @@
-export interface UserState {
+export interface UserInfo {
   isAuth: boolean
-  loading: boolean
   token: string | null
+}
+
+export interface UserState extends UserInfo {
+  loading: boolean
   error: string | null
 }
 
@@ -30,7 +33,7 @@ export type UserAction =
   | UserLoginSuccessAction
   | UserLoginErrorAction
 
-export interface UserData {
+export interface LoginData {
   username: string
   password: string
 }
