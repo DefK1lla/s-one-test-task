@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { PostList } from './components/Post/PostList'
+import { PostList } from './components/Post'
 
 const mock = [
   {

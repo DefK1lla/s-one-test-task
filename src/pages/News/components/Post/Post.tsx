@@ -10,7 +10,7 @@ import {
   CardHeader,
 } from '@mui/material'
 
-import type { Post as IPost } from '../../../../shared/types/post'
+import type { Post as IPost } from 'shared/types/post'
 
 interface Props extends Omit<IPost, 'id'> {
   number: number

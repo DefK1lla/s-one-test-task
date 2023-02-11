@@ -2,9 +2,9 @@ import { Container, Grid } from '@mui/material'
 
 import { FC } from 'react'
 
-import { Post } from './Post'
+import type { Post as IPost } from 'shared/types/post'
 
-import type { Post as IPost } from '../../../../shared/types/post'
+import { Post } from './Post'
 
 interface ListProps {
   posts: IPost[]
