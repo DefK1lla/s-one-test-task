@@ -1,6 +1,6 @@
 import s from './header.module.css'
 
-import { useState } from 'react'
+import { RefObject, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import {
@@ -24,6 +24,7 @@ import { NavItem } from '../../shared/types/nav'
 
 interface Props {
   navItems: NavItem[]
+  wrapperRef?: RefObject<HTMLElement>
   window?: () => Window
 }
 

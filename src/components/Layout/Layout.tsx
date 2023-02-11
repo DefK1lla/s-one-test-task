@@ -1,6 +1,12 @@
 import s from './layout.module.css'
 
-import { FC, PropsWithChildren } from 'react'
+import {
+  FC,
+  PropsWithChildren,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 
 import { navItems } from '../../shared/content/nav'
 
@@ -11,7 +17,7 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className={s.wrapper}>
       <Header navItems={navItems} />
-      <main>{children}</main>
+      <main className='main'>{children}</main>
       <Footer navItems={navItems} />
     </div>
   )
