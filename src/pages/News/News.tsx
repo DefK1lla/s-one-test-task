@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { PostList } from './components/Post'
+import { PostList, PostPanel } from './components/Post'
 
 const mock = [
   {
@@ -21,5 +21,10 @@ const mock = [
 ]
 
 export const News: FC = () => {
-  return <PostList posts={mock} />
+  return (
+    <>
+      <PostPanel onAdd={() => console.log('clicked')} />
+      <PostList posts={mock} />
+    </>
+  )
 }
