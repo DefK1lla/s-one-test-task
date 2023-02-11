@@ -3,11 +3,17 @@ import {
   UserActionTypes,
   UserState,
 } from '../../shared/types/user'
+import StorageWrapper from '../../shared/utils/storage'
+
+const storage = new StorageWrapper('local')
+
+const userFromStorage =
+  storage.get<Omit<UserState, 'error' | 'loading'>>('user')
 
 const initialState: UserState = {
-  isAuth: false,
+  isAuth: userFromStorage?.isAuth || false,
   loading: false,
-  token: null,
+  token: userFromStorage?.token || null,
   error: null,
 }
 

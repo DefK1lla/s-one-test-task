@@ -2,25 +2,27 @@ import type { Dispatch } from 'redux'
 import {
   UserAction,
   UserActionTypes,
-  UserData,
+  LoginData,
 } from '../../shared/types/user'
+import userApi from '../../shared/api/user'
 
-export const login =
-  (userData: UserData) => async (dispatch: Dispatch<UserAction>) => {
-    try {
-      dispatch({ type: UserActionTypes.USER_LOGIN })
-      // TODO add authorization in api
-      setTimeout(() => {
+export default {
+  login:
+    (userData: LoginData) =>
+    async (dispatch: Dispatch<UserAction>) => {
+      try {
+        dispatch({ type: UserActionTypes.USER_LOGIN })
+        const res = await userApi.login(userData)
         dispatch({
           type: UserActionTypes.USER_LOGIN_SUCCESS,
-          payload: 'anyToken',
+          payload: res.token,
         })
-      }, 500)
-    } catch (e) {
-      const err = e as Error
-      dispatch({
-        type: UserActionTypes.USER_LOGIN_ERROR,
-        payload: err.message,
-      })
-    }
-  }
+      } catch (e) {
+        const err = e as Error
+        dispatch({
+          type: UserActionTypes.USER_LOGIN_ERROR,
+          payload: err.message,
+        })
+      }
+    },
+}
