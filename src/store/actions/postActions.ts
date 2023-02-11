@@ -2,10 +2,12 @@ import type { Dispatch } from 'redux'
 import {
   PostsAction,
   PostsActionTypes,
-  Post,
 } from '../../shared/types/post'
 
 import postApi from '../../shared/api/post'
+import { ThunkDispatch } from 'redux-thunk'
+import { Action } from 'redux'
+import { RootState } from 'store'
 
 const getPosts = () => async (dispatch: Dispatch<PostsAction>) => {
   try {
@@ -25,11 +27,12 @@ const getPosts = () => async (dispatch: Dispatch<PostsAction>) => {
 }
 
 const deleteOneById =
-  (id: number) => async (dispatch: Dispatch<PostsAction>) => {
+  (id: number) =>
+  async (dispatch: ThunkDispatch<RootState, void, PostsAction>) => {
     try {
       dispatch({ type: PostsActionTypes.POSTS_FETCH })
       await postApi.deleteOneById(id)
-      getPosts()
+      dispatch(getPosts())
     } catch (e) {
       const err = e as Error
       dispatch({

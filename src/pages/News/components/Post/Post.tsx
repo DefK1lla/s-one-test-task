@@ -12,9 +12,10 @@ import {
 
 import type { Post as IPost } from 'shared/types/post'
 
-interface Props extends Omit<IPost, 'id'> {
+interface Props extends IPost {
   number: number
   isPrime: boolean
+  onRemove: (id: number) => void
 }
 
 export const Post: FC<Props> = ({
@@ -23,7 +24,13 @@ export const Post: FC<Props> = ({
   img,
   number,
   isPrime,
+  id,
+  onRemove,
 }) => {
+  const handleRemove = () => {
+    onRemove(id)
+  }
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia sx={{ height: 200 }} image={img} />
@@ -37,7 +44,9 @@ export const Post: FC<Props> = ({
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size='small'>Remove</Button>
+        <Button onClick={handleRemove} size='small'>
+          Remove
+        </Button>
       </CardActions>
     </Card>
   )

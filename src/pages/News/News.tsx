@@ -13,10 +13,12 @@ export const News: FC = () => {
     postActions.getPosts()
   }, [])
 
+  const onRemove = (id: number) => postActions.deleteOneById(id)
+
   return (
     <>
       <PostPanel onAdd={() => console.log('clicked')} />
-      <PostList posts={posts} />
+      <PostList posts={posts} onPostRemove={onRemove} />
     </>
   )
 }

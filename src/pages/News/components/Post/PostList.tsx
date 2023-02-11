@@ -10,9 +10,10 @@ import { Post } from './Post'
 
 interface ListProps {
   posts: IPost[]
+  onPostRemove: (id: number) => void
 }
 
-export const PostList: FC<ListProps> = ({ posts }) => {
+export const PostList: FC<ListProps> = ({ posts, onPostRemove }) => {
   return (
     <Container>
       <Grid
@@ -32,6 +33,8 @@ export const PostList: FC<ListProps> = ({ posts }) => {
                 img={post.img}
                 number={number}
                 isPrime={isNumberPrime}
+                id={post.id}
+                onRemove={onPostRemove}
               />
             </Grid>
           )
