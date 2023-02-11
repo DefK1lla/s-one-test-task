@@ -82,7 +82,7 @@ export default function DrawerAppBar({ window, navItems }: Props) {
               variant='h6'
               component='div'
             >
-              MUI
+              App
             </Typography>
             <Box className={s.navDesktop}>
               {navItems.map(item => (
