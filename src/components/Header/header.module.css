@@ -1,0 +1,51 @@
+.wrapper {
+  display: flex;
+}
+
+.logoDesktop {
+  flex-grow: 1;
+}
+
+.drawer {
+  display: none;
+}
+
+.drawerPaper {
+  width: 240px;
+}
+
+.burgerBtn{
+  display: none;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.navItemBtnWhite {
+  color: #fff;
+}
+
+.navItemBtnBlack {
+  text-align: center;
+  color: #000;
+}
+
+@media (max-width: 600px) {
+  .burgerBtn {
+    display: block;
+    position: static;
+    visibility: visible;
+    pointer-events: all;
+  }
+
+  .navDesktop {
+    display: none;
+  }
+
+  .drawer {
+    display: block;
+  }
+  
+  .logoDesktop{
+    display: none;
+  }
+}
