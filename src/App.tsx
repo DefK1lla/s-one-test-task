@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
+import Header from './components/Header'
 import { Login } from './pages/Login'
 import { News } from './pages/News'
 import { Profile } from './pages/Profile'
@@ -8,6 +9,7 @@ import { NotFount } from './pages/NotFound/NotFound'
 function App() {
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         <Route path='/login' element={<Login />} />
         <Route path='/profile' element={<Profile />} />
