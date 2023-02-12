@@ -64,3 +64,9 @@ export type PostsAction =
   | PostsFilterSuccessAction
   | PostsFilterErrorAction
   | PostsFilterKeywordAction
+
+export interface AddPostData {
+  title: string
+  description: string
+  img: string
+}

@@ -2,6 +2,7 @@ import type { Dispatch, Store } from 'redux'
 import { ThunkDispatch } from 'redux-thunk'
 
 import {
+  AddPostData,
   PostsAction,
   PostsActionTypes,
 } from '../../shared/types/post'
@@ -42,6 +43,21 @@ const deleteOneById =
     try {
       dispatch({ type: PostsActionTypes.POSTS_FETCH })
       await postApi.deleteOneById(id)
+      dispatch(getPosts())
+    } catch (e) {
+      const err = e as Error
+      dispatch({
+        type: PostsActionTypes.POSTS_FETCH_ERROR,
+        payload: err.message,
+      })
+    }
+  }
+
+const addPost =
+  (data: AddPostData) =>
+  async (dispatch: ThunkDispatch<RootState, void, PostsAction>) => {
+    try {
+      await postApi.add(data)
       dispatch(getPosts())
     } catch (e) {
       const err = e as Error
@@ -98,6 +114,7 @@ const setKeyword =
 export default {
   getPosts,
   deleteOneById,
+  addPost,
   filterPosts,
   setKeyword,
 }

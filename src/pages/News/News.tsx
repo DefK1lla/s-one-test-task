@@ -3,6 +3,7 @@ import { FC, useEffect, useState } from 'react'
 import { useActions, useAppSelector } from 'shared/hooks/store'
 import useDebounce from 'shared/hooks/useDebounce'
 import { useModal } from 'shared/hooks/useModal'
+import { AddPostData } from 'shared/types/post'
 
 import { AddPost, PostList, PostPanel } from './components/Post'
 
@@ -20,6 +21,10 @@ export const News: FC = () => {
   const onKeywordChange = (keyword: string) =>
     postActions.setKeyword(keyword)
 
+  const onSubmit = (data: AddPostData) => {
+    postActions.addPost(data)
+  }
+
   return (
     <>
       <PostPanel
@@ -28,7 +33,11 @@ export const News: FC = () => {
         onAddClick={() => setIsOpen(true)}
       />
       <PostList />
-      <AddPost isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      <AddPost
+        onSubmit={onSubmit}
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+      />
     </>
   )
 }

@@ -35,7 +35,7 @@ export const Post: FC<Props> = ({
 
   return (
     <Card className={s.post}>
-      <CardMedia className={s.postMedia} image={img} />
+      {img && <CardMedia className={s.postMedia} image={img} />}
       <CardHeader
         title={number.toString() + '. ' + title}
         subheader={isPrime ? 'Prime' : 'Not Prime'}
