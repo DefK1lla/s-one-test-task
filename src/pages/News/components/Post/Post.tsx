@@ -17,10 +17,12 @@ import type { Post as IPost } from 'shared/types/post'
 interface Props extends IPost {
   number: number
   isPrime: boolean
+  access: boolean
   onRemove: (id: number) => void
 }
 
 export const Post: FC<Props> = ({
+  access,
   title,
   description,
   img,
@@ -45,11 +47,13 @@ export const Post: FC<Props> = ({
           {description}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button onClick={handleRemove} size='small'>
-          Remove
-        </Button>
-      </CardActions>
+      {access && (
+        <CardActions>
+          <Button onClick={handleRemove} size='small'>
+            Remove
+          </Button>
+        </CardActions>
+      )}
     </Card>
   )
 }

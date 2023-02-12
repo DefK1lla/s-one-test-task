@@ -9,6 +9,7 @@ import { AddPost, PostList, PostPanel } from './components/Post'
 
 export const News: FC = () => {
   const keyword = useAppSelector(state => state.posts.keyword)
+  const isAuth = useAppSelector(state => state.user.isAuth)
   const { postActions } = useActions()
   const debouncedKeyword = useDebounce<string>(keyword, 500)
 
@@ -27,12 +28,14 @@ export const News: FC = () => {
 
   return (
     <>
-      <PostPanel
-        keyword={keyword}
-        onKeywordChange={onKeywordChange}
-        onAddClick={() => setIsOpen(true)}
-      />
-      <PostList />
+      {isAuth && (
+        <PostPanel
+          keyword={keyword}
+          onKeywordChange={onKeywordChange}
+          onAddClick={() => setIsOpen(true)}
+        />
+      )}
+      <PostList access={isAuth} />
       <AddPost
         onSubmit={onSubmit}
         isOpen={isOpen}
