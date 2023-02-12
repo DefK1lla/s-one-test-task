@@ -1,0 +1,10 @@
+.wrapper {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.error {
+  text-align: center;
+  color: #FF0000;
+}
