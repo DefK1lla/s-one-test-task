@@ -11,6 +11,12 @@
       "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
       "description": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
       "img": "https://via.placeholder.com/600/24f355"
+    },
+    {
+      "id": 3,
+      "title": "tst sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+      "description": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
+      "img": "https://via.placeholder.com/600/24f355"
     }
   ]
 }

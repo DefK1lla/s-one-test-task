@@ -1,33 +1,31 @@
 import s from './post.module.css'
 
-import { ChangeEventHandler, FC, useCallback, useEffect } from 'react'
+import { ChangeEventHandler, FC, useEffect, useState } from 'react'
 import { Button, Container, TextField, Stack } from '@mui/material'
+
 import { useActions, useAppSelector } from 'shared/hooks/store'
 import useDebounce from 'shared/hooks/useDebounce'
-import post from 'shared/api/post'
 
 interface Props {
-  onAdd: () => void
+  keyword: string
+  onAddClick: () => void
+  onKeywordChange: (keyword: string) => void
 }
 
-export const PostPanel: FC<Props> = ({ onAdd }) => {
-  const keyword = useAppSelector(state => state.posts.keyword)
-  const { postActions } = useActions()
-  const debouncedKeyword = useDebounce<string>(keyword, 500)
-
+export const PostPanel: FC<Props> = ({
+  keyword,
+  onAddClick,
+  onKeywordChange,
+}) => {
   const onChange: ChangeEventHandler<HTMLInputElement> = e => {
-    postActions.setKeyword(e.target.value)
+    onKeywordChange(e.target.value)
   }
-
-  useEffect(() => {
-    postActions.filterPosts()
-  }, [debouncedKeyword])
 
   return (
     <div className={s.panel}>
       <Container>
         <Stack alignItems='start' spacing={2}>
-          <Button variant='outlined' onClick={onAdd}>
+          <Button variant='outlined' onClick={onAddClick}>
             Add post
           </Button>
           <TextField
