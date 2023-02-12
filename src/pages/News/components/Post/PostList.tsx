@@ -1,24 +1,32 @@
-import { Button, Container, Grid } from '@mui/material'
+import { Container, Grid } from '@mui/material'
 
-import { FC } from 'react'
+import { FC, memo, useCallback, useEffect } from 'react'
 
-import type { Post as IPost } from 'shared/types/post'
+import { useActions, useAppSelector } from 'shared/hooks/store'
 import { getFibonacciByIndex } from 'shared/utils/helpers/getFibonacciByIndex'
 import { isPrime } from 'shared/utils/helpers/isPrime'
 
 import { Post } from './Post'
 
-interface ListProps {
-  posts: IPost[]
-  onPostRemove: (id: number) => void
-}
+export const PostList: FC = memo(() => {
+  const { postActions } = useActions()
+  const posts = useAppSelector(state => state.posts.list)
+  const loading = useAppSelector(state => state.posts.loading)
 
-export const PostList: FC<ListProps> = ({ posts, onPostRemove }) => {
+  useEffect(() => {
+    postActions.getPosts()
+  }, [])
+
+  const onRemove = useCallback(
+    (id: number) => postActions.deleteOneById(id),
+    []
+  )
+
   return (
     <Container>
       <Grid
         container
-        rowSpacing={1}
+        rowSpacing={2}
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
       >
         {posts.map((post, index) => {
@@ -34,7 +42,7 @@ export const PostList: FC<ListProps> = ({ posts, onPostRemove }) => {
                 number={number}
                 isPrime={isNumberPrime}
                 id={post.id}
-                onRemove={onPostRemove}
+                onRemove={onRemove}
               />
             </Grid>
           )
@@ -42,4 +50,4 @@ export const PostList: FC<ListProps> = ({ posts, onPostRemove }) => {
       </Grid>
     </Container>
   )
-}
+})

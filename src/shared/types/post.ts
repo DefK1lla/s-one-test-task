@@ -10,6 +10,7 @@ export interface PostsState {
   list: Post[]
   loading: boolean
   error: string | null
+  keyword: string
 }
 
 export enum PostsActionTypes {
@@ -19,6 +20,7 @@ export enum PostsActionTypes {
   POSTS_FILTER = 'POSTS_FILTER',
   POSTS_FILTER_SUCCESS = 'POSTS_FILTER_SUCCESS',
   POSTS_FILTER_ERROR = 'POSTS_FILTER_ERROR',
+  POSTS_FILTER_KEYWORD = 'POSTS_FILTER_KEYWORD',
 }
 
 interface PostsFetchAction {
@@ -49,6 +51,11 @@ interface PostsFilterErrorAction {
   payload: string
 }
 
+interface PostsFilterKeywordAction {
+  type: PostsActionTypes.POSTS_FILTER_KEYWORD
+  payload: string
+}
+
 export type PostsAction =
   | PostsFetchAction
   | PostsFetchSuccessAction
@@ -56,3 +63,4 @@ export type PostsAction =
   | PostsFilterAction
   | PostsFilterSuccessAction
   | PostsFilterErrorAction
+  | PostsFilterKeywordAction

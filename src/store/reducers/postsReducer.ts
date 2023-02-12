@@ -10,6 +10,7 @@ const initialState: PostsState = {
   error: null,
   originalList: [],
   list: [],
+  keyword: '',
 }
 
 export const postsReducer = (
@@ -24,16 +25,18 @@ export const postsReducer = (
       return {
         loading: false,
         error: null,
+        keyword: state.keyword,
         originalList: action.payload,
         list: action.payload,
       }
     case PostsActionTypes.POSTS_FETCH_ERROR ||
       PostsActionTypes.POSTS_FILTER_ERROR:
       return {
-        loading: false,
-        error: action.payload,
         originalList: [],
         list: [],
+        loading: false,
+        error: action.payload,
+        keyword: state.keyword,
       }
     case PostsActionTypes.POSTS_FILTER_SUCCESS:
       return {
@@ -41,6 +44,12 @@ export const postsReducer = (
         list: action.payload,
         loading: false,
         error: null,
+        keyword: state.keyword,
+      }
+    case PostsActionTypes.POSTS_FILTER_KEYWORD:
+      return {
+        ...state,
+        keyword: action.payload,
       }
     default:
       return state
