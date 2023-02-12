@@ -1,4 +1,6 @@
-import { FC, memo } from 'react'
+import s from './post.module.css'
+
+import { FC } from 'react'
 
 import {
   Button,
@@ -32,8 +34,8 @@ export const Post: FC<Props> = ({
   }
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardMedia sx={{ height: 200 }} image={img} />
+    <Card className={s.post}>
+      <CardMedia className={s.postMedia} image={img} />
       <CardHeader
         title={number.toString() + '. ' + title}
         subheader={isPrime ? 'Prime' : 'Not Prime'}
