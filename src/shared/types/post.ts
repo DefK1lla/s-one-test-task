@@ -69,4 +69,10 @@ export interface AddPostData {
   title: string
   description: string
   img: string
+  fields?: PostField[]
+}
+
+export interface PostField {
+  name: string
+  value: string
 }

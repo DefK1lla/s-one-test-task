@@ -5,3 +5,8 @@
   flex-direction: column;
   gap: 30px;
 }
+
+.additionanalField {
+  display: flex;
+  justify-content: space-between;
+}
