@@ -1,6 +1,6 @@
 import type { LoginData } from '../types/user'
 
-import mockLogin from '../utils/mockLogin'
+import mockLogin from '../utils/mock/mockLogin'
 
 class UserApi {
   login = async (userData: LoginData) => {

@@ -1,12 +1,6 @@
 import s from './layout.module.css'
 
-import {
-  FC,
-  PropsWithChildren,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import { FC, PropsWithChildren } from 'react'
 
 import { navItems } from '../../shared/content/nav'
 
